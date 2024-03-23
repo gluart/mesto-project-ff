@@ -12,10 +12,10 @@ import initialCards from "./cards.js";
 
 
 const cardTemplate = document.querySelector('#card-template').content;
-const placesList = document.querySelector('.places__list'); 
+const cardsContainer = document.querySelector('.places__list');
 
 
-initialCards.forEach(function (elem, i) {
+function createCard(cardData, callBackFn) {
 
   const cardItem = cardTemplate.querySelector('.card').cloneNode(true);
 
@@ -24,18 +24,25 @@ initialCards.forEach(function (elem, i) {
   const deleteCardButton = cardItem.querySelector('.card__delete-button');
   const cardTitle = cardDescription.querySelector('.card__title');
 
-  cardImage.src = initialCards[i].link;
-  cardImage.alt = initialCards[i].name;
-  cardTitle.textContent = initialCards[i].name;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardTitle.textContent = cardData.name;
 
-  placesList.append(cardItem);
+  deleteCardButton.addEventListener('click', () => callBackFn(cardItem));
 
-  deleteCardButton.addEventListener('click', deleteCard);
-
-});
-
-function deleteCard(event) {
- 
-  const eventTarget = event.target.closest('.card').remove();
+  return cardItem;
 
 }
+
+function deleteCard(card) {
+ 
+  card.remove();
+
+}
+
+initialCards.forEach(function (cardData) {
+
+  const card = createCard(cardData, deleteCard);
+  cardsContainer.append(card);
+  
+});
