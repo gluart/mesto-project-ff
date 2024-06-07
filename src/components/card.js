@@ -9,7 +9,7 @@ function createCard(cardData, onDelete, likeCard, openCardImage) {
   const cardDescription = cardItem.querySelector('.card__description');
   const deleteCardButton = cardItem.querySelector('.card__delete-button');
   const cardTitle = cardDescription.querySelector('.card__title');
-  const cardLikeButton = cardDescription.querySelectorAll('.card__like-button');
+  const cardLikeButtons = cardDescription.querySelectorAll('.card__like-button');
 
   cardImage.src = cardData.link,
   cardImage.alt = cardData.name;
@@ -17,11 +17,11 @@ function createCard(cardData, onDelete, likeCard, openCardImage) {
 
   deleteCardButton.addEventListener('click', () => onDelete(cardItem));
 
-  cardLikeButton.forEach((button) => {
+  cardLikeButtons.forEach((button) => {
     button.addEventListener('click', likeCard);
   })
 
-  cardItem.addEventListener('click', openCardImage);
+  cardImage.addEventListener('click', () => openCardImage(cardData.link, cardData.name));
 
   return cardItem;
 
