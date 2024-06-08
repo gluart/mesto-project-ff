@@ -3,7 +3,7 @@
 import initialCards from "./components/cards.js";
 import "./pages/index.css";
 import { createCard, deleteCard, likeCard } from "./components/card.js";
-import { openPopup, closePopup, closePopupOverlay, closePopupEsc } from "./components/modal.js";
+import { openPopup, closePopup, closePopupOverlay } from "./components/modal.js";
 
 const cardsContainer = document.querySelector('.places__list');
 const popupEdit = document.querySelector('.popup_type_edit')
@@ -20,13 +20,12 @@ const jobInput = document.querySelector('.popup__input_type_description');
 const cardForm = document.querySelector('form[name="new-place"]');
 const cardNameInput = document.querySelector('.popup__input_type_card-name');
 const cardUrlInput = document.querySelector('.popup__input_type_url');
+const popupTypeImage = document.querySelector('.popup_type_image');
+const popupImage = document.querySelector('.popup__image');
+const popupImgCaption = document.querySelector('.popup__caption');
 
 
 function openCardImage(cardLink, cardName) {
-
-  const popupTypeImage = document.querySelector('.popup_type_image');
-  const popupImage = document.querySelector('.popup__image');
-  const popupImgCaption = document.querySelector('.popup__caption');
 
   popupImage.src = cardLink;
   popupImage.alt = cardName;
