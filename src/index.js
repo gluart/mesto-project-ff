@@ -3,7 +3,7 @@
 import initialCards from "./components/cards.js";
 import "./pages/index.css";
 import { createCard, deleteCard, likeCard } from "./components/card.js";
-import { openPopup, closePopup, closePopupOverlay } from "./components/modal.js";
+import { openPopup, closePopup, closePopupByOverlay } from "./components/modal.js";
 
 const cardsContainer = document.querySelector('.places__list');
 const popupEdit = document.querySelector('.popup_type_edit')
@@ -90,7 +90,7 @@ closePopupBtns.forEach((button) => {
 })
 
 
-closePopupOverlay(popups);
+closePopupByOverlay(popups);
 
 
 document.addEventListener('DOMContentLoaded', () => {
