@@ -1,4 +1,5 @@
 
+// Функция открытия попапа
 
 function openPopup(popup) {
 
@@ -7,18 +8,24 @@ function openPopup(popup) {
 
 }
 
+// Функция закрытия попапа
+
 function closePopup(popup) {
 
-  document.removeEventListener('keydown', closePopupByEsc)
+  document.removeEventListener('keydown', closePopupByEsc);
   popup.classList.remove('popup_is-opened');
 
 }
+
+// Функция закрытия попапа клавишей - ESCAPE
 
 function closePopupByEsc(event) {
   if (event.key === 'Escape') {
     closePopup(document.querySelector('.popup_is-opened'));
   }
 }
+
+// Функция закрытия попапа нажатием на - OVERLAY
 
 function closePopupByOverlay(popup) {
   popup.forEach((popup) => {

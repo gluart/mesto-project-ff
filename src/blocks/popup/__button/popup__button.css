@@ -19,6 +19,30 @@
   cursor: pointer;
 }
 
+.popup__button_disabled {
+  color: #c4c4c4;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+
+.popup__button_disabled:hover {
+  color: #c4c4c4;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+
+.save {
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.save:hover {
+  background-color: #000;
+  color: #fff;
+  cursor: none;
+}
+
 @media screen and (max-width: 568px) {
   .popup__button {
     font-size: 14px;
