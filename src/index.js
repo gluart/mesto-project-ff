@@ -23,7 +23,7 @@ const cardUrlInput = document.querySelector('.popup__input_type_url');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImage = document.querySelector('.popup__image');
 const popupImgCaption = document.querySelector('.popup__caption');
-const avatarForm = document.querySelector('form[name="update-avatar"]')
+const avatarForm = document.querySelector('form[name="update-avatar"]');
 const profileAvatar = document.querySelector('.profile__image');
 const popupTypeAvatar = document.querySelector('.popup_type_avatar');
 const inputTypeAvatar = document.querySelector('.popup__input_type_avatar')
@@ -52,6 +52,12 @@ function handleAvatarForm(event) {
   popupButton.classList.add('save');
   
   updateAvatarUser(avatar)
+    .then((res) => {
+
+      profileAvatar.src = res.avatar;
+      avatarForm.reset();
+      closePopup(popupTypeAvatar);
+    })
     .catch((error) => {
       console.log(error);
     })
@@ -60,9 +66,6 @@ function handleAvatarForm(event) {
       popupButton.textContent = defaultText;
       popupButton.classList.remove('save');
     })
-  
-  avatarForm.reset();
-  closePopup(popupTypeAvatar);
 }
 
 avatarForm.addEventListener('submit', handleAvatarForm);
@@ -94,6 +97,13 @@ function handleFormSubmit(event) {
   popupButton.classList.add('save');
 
   updateUser(profileName.textContent, profileDescription.textContent)
+    .then((res) => {
+
+      profileName.textContent = res.name;
+      profileDescription.textContent = res.about;
+      profileForm.reset();
+      closePopup(popupProfile);
+    })
     .catch((error => {
 
       console.log(error)
@@ -103,8 +113,6 @@ function handleFormSubmit(event) {
       popupButton.textContent = defaultText;
       popupButton.classList.remove('save');
     })
-
-  closePopup(popupProfile);
 }
 
 // Слушатель формы "Редактировать профиль", при сохранении
@@ -226,6 +234,8 @@ Promise.all([getUserData(), getInitialCards()])
     profileDescription.textContent = userData.about
     profileAvatar.src = `${userData.avatar}`;
     myUserID = userData._id;
+
+    console.log(cardData);
 
     cardData.forEach((cardData) => {
 
