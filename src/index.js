@@ -244,3 +244,4 @@ Promise.all([getUserData(), getInitialCards()])
   .catch((error) => {
     console.log(error);
   })
+
