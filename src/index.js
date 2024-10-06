@@ -235,8 +235,6 @@ Promise.all([getUserData(), getInitialCards()])
     profileAvatar.src = `${userData.avatar}`;
     myUserID = userData._id;
 
-    console.log(cardData);
-
     cardData.forEach((cardData) => {
 
       const cardElement = createCard(cardData, deleteCard, likeCard, openCardImage, myUserID);
