@@ -10,7 +10,6 @@ function createCard(cardData, onDelete, likeCard, openCardImage, myUserID) {
   const cardDescription = cardItem.querySelector('.card__description');
   const deleteCardButton = cardItem.querySelector('.card__delete-button');
   const cardTitle = cardDescription.querySelector('.card__title');
-  const cardLikeButtons = cardDescription.querySelectorAll('.card__like-button');
   const cardLikeCount = cardItem.querySelector('.card-like-count');
   const likeButton = cardItem.querySelector('.card__like-button');
 
@@ -21,12 +20,9 @@ function createCard(cardData, onDelete, likeCard, openCardImage, myUserID) {
 
   deleteCardButton.addEventListener('click', () => onDelete(cardItem, cardData._id));
 
-  cardLikeButtons.forEach((button) => {
+  likeButton.addEventListener('click', (event) => {
 
-    button.addEventListener('click', (event) => {
-
-      likeCard(event, cardData._id, cardLikeCount);
-    })
+    likeCard(event, cardData._id, cardLikeCount);
   })
 
   if (cardData.likes.some(like => like._id === myUserID)) {
