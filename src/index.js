@@ -87,16 +87,13 @@ function handleFormSubmit(event) {
 
   event.preventDefault();
 
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
-
   const popupButton = profileForm.querySelector('.popup__button');
   const defaultText = popupButton.textContent;
 
   popupButton.textContent = 'Сохранение...';
   popupButton.classList.add('save');
 
-  updateUser(profileName.textContent, profileDescription.textContent)
+  updateUser(nameInput.value, jobInput.value)
     .then((res) => {
 
       profileName.textContent = res.name;
